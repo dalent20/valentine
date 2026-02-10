@@ -84,12 +84,15 @@ async function openEnvelope(){
   envelope.classList.add("open");
   hint.textContent = "💌";
 
-  await sleep(650);
+  // wait until the letter has slid out a bit
+  await sleep(900);
+
   await typeLines(MESSAGE_LINES);
 
   await sleep(400);
   question.hidden = false;
 }
+
 
 envelope.addEventListener("click", openEnvelope);
 envelope.addEventListener("keydown", (e)=>{
