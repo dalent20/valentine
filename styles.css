@@ -286,3 +286,41 @@ body{
     animation: none !important;
   }
 }
+
+#flyPhoto{
+  position: fixed;
+  top: 50%;
+  left: -40%;
+  width: 180px;
+  max-width: 60vw;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  transform: translateY(-50%) rotate(-8deg) scale(.95);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#flyPhoto.fly{
+  animation: flyAcross 2.6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes flyAcross{
+  0%{
+    left: -40%;
+    opacity: 0;
+    transform: translateY(-50%) rotate(-8deg) scale(.9);
+  }
+  10%{
+    opacity: 1;
+  }
+  50%{
+    transform: translateY(-60%) rotate(4deg) scale(1);
+  }
+  100%{
+    left: 120%;
+    opacity: 0;
+    transform: translateY(-40%) rotate(-2deg) scale(.95);
+  }
+}
+
