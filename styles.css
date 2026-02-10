@@ -329,7 +329,7 @@ body{
 }
 
 #flyPhoto.fly{
-  animation: flyAcross 10s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: flyAcross 100s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 @keyframes flyAcross{
