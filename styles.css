@@ -21,7 +21,9 @@ html,body{ height:100%; }
 
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.4;
   color:var(--ink);
   overflow-x:hidden;
   background:
@@ -42,13 +44,19 @@ body{
 .card{
   width:min(720px, 100%);
   background:var(--card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border:1px solid rgba(255,255,255,.5);
   border-radius:var(--radius);
   box-shadow: var(--shadow);
   padding: 28px 18px 20px;
   position:relative;
+}
+
+/* Backdrop blur (with fallback) */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)){
+  .card{
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 .badge{
@@ -76,13 +84,18 @@ body{
   width:min(520px, 100%);
   margin: 18px auto 0;
   position:relative;
-  height: 400px;
+  height: clamp(320px, 60vh, 400px);
   cursor:pointer;
   outline:none;
 
-  /* smoother 3D flap on more browsers */
   perspective: 1000px;
   -webkit-tap-highlight-color: transparent;
+}
+
+.envelope:focus-visible{
+  outline: 3px solid rgba(225,29,72,.35);
+  outline-offset: 6px;
+  border-radius: var(--radius2);
 }
 
 .env-body{
@@ -103,12 +116,13 @@ body{
   background: linear-gradient(180deg, #ffe4e6, #fff);
   border-radius: var(--radius2);
   transform-origin: top;
-  transform: rotateX(0deg);
+  transform: rotateX(0deg) translateZ(0.01px);
   transition: transform 900ms cubic-bezier(.2,.9,.2,1);
   clip-path: polygon(0 0, 100% 0, 50% 75%);
   border: 1px solid rgba(0,0,0,.06);
   z-index: 3;
   backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 /* The letter/card that slides out */
@@ -124,11 +138,9 @@ body{
   box-shadow: var(--shadow3);
   overflow: hidden;
 
-  /* START hidden inside envelope */
   opacity: 0;
   transform: translateY(155px) scale(.985);
 
-  /* animate out */
   transition:
     transform 900ms cubic-bezier(.2,.9,.2,1),
     opacity 450ms ease;
@@ -149,7 +161,7 @@ body{
 
 .letter-message{
   padding: 14px;
-  height: calc(100% - 52px); /* leaves room for To/From header */
+  height: calc(100% - 52px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -172,7 +184,7 @@ body{
   font-size: 22px;
   font-weight: 700;
   color: var(--rose);
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .buttons{
@@ -192,7 +204,13 @@ body{
   box-shadow: 0 10px 24px rgba(0,0,0,.10);
   transition: transform 120ms ease, filter 120ms ease;
 }
+
 .btn:active{ transform: translateY(1px) scale(.99); }
+
+.btn:focus-visible{
+  outline: 3px solid rgba(225,29,72,.35);
+  outline-offset: 3px;
+}
 
 .yes{
   background: linear-gradient(135deg, var(--rose), var(--rose2));
@@ -212,21 +230,45 @@ body{
   background: rgba(225,29,72,.08);
   border: 1px solid rgba(225,29,72,.15);
 }
+
 .big2{
   font-size: 20px;
   font-weight: 800;
   color: var(--rose);
 }
+
 .small{
   margin-top: 6px;
   color: var(--muted);
   font-size: 14px;
 }
 
+.gift-link{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:800;
+  color:white;
+  background: linear-gradient(135deg, var(--rose), var(--rose2));
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.gift-link:active{ transform: translateY(1px) scale(.99); }
+.gift-link:hover{ filter: brightness(1.03); }
+
+.gift-link:focus-visible{
+  outline: 3px solid rgba(225,29,72,.35);
+  outline-offset: 3px;
+}
+
 /* Open state */
 .envelope.open .env-flap{
-  transform: rotateX(180deg);
+  transform: rotateX(180deg) translateZ(0.01px);
 }
+
 .envelope.open .env-letter{
   opacity: 1;
   transform: translateY(-10px) scale(1);
@@ -250,22 +292,6 @@ body{
   animation: floatUp linear forwards;
 }
 
-.gift-link{
-  display:inline-block;
-  margin-top:10px;
-  padding:10px 14px;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:800;
-  color:white;
-  background: linear-gradient(135deg, var(--rose), var(--rose2));
-  box-shadow: 0 10px 24px rgba(0,0,0,.10);
-  transition: transform 120ms ease, filter 120ms ease;
-}
-.gift-link:active{ transform: translateY(1px) scale(.99); }
-.gift-link:hover{ filter: brightness(1.03); }
-
-
 @keyframes floatUp{
   from { transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
   10% { opacity:.8; }
@@ -281,12 +307,13 @@ body{
 
 /* Accessibility: reduce motion */
 @media (prefers-reduced-motion: reduce){
-  .env-flap, .env-letter, .heart, .btn{
+  .env-flap, .env-letter, .heart, .btn, .gift-link{
     transition: none !important;
     animation: none !important;
   }
 }
 
+/* Flying photo */
 #flyPhoto{
   position: fixed;
   top: 50%;
@@ -311,16 +338,11 @@ body{
     opacity: 0;
     transform: translateY(-50%) rotate(-8deg) scale(.9);
   }
-  10%{
-    opacity: 1;
-  }
-  50%{
-    transform: translateY(-60%) rotate(4deg) scale(1);
-  }
+  10%{ opacity: 1; }
+  50%{ transform: translateY(-60%) rotate(4deg) scale(1); }
   100%{
     left: 120%;
     opacity: 0;
     transform: translateY(-40%) rotate(-2deg) scale(.95);
   }
 }
-
