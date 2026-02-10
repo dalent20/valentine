@@ -250,6 +250,22 @@ body{
   animation: floatUp linear forwards;
 }
 
+.gift-link{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:800;
+  color:white;
+  background: linear-gradient(135deg, var(--rose), var(--rose2));
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+.gift-link:active{ transform: translateY(1px) scale(.99); }
+.gift-link:hover{ filter: brightness(1.03); }
+
+
 @keyframes floatUp{
   from { transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
   10% { opacity:.8; }
