@@ -168,10 +168,21 @@ setInterval(()=>{
   ctx.fillStyle = `hsl(${hue} 90% 60%)`;
 }, 60);
 
+const flyPhoto = document.getElementById("flyPhoto");
+
 yesBtn.addEventListener("click", ()=>{
   footerNote.hidden = false;
   yesBtn.disabled = true;
   noBtn.disabled = true;
+
   burstConfetti();
+
+  // 💕 fly the photo across the screen
+  if (flyPhoto){
+    flyPhoto.classList.remove("fly"); // reset if needed
+    void flyPhoto.offsetWidth;        // force reflow
+    flyPhoto.classList.add("fly");
+  }
 });
+
 
