@@ -15,6 +15,7 @@ const MESSAGE_LINES = [
 const envelope = document.getElementById("envelope");
 const hint = document.getElementById("hint");
 const typeTarget = document.getElementById("typeTarget");
+const letterMessage = document.querySelector(".letter-message");
 const question = document.getElementById("question");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
@@ -51,16 +52,29 @@ function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
 
 async function typeLines(lines){
   typeTarget.textContent = "";
-  for (let li=0; li<lines.length; li++){
+  letterMessage.scrollTop = 0;
+
+  for (let li = 0; li < lines.length; li++){
     const line = lines[li];
-    for (let i=0; i<line.length; i++){
+
+    for (let i = 0; i < line.length; i++){
       typeTarget.textContent += line[i];
-      await sleep(22 + Math.random()*25);
+
+      // 🔽 force auto-scroll as text grows
+      letterMessage.scrollTop = letterMessage.scrollHeight;
+
+      await sleep(20 + Math.random() * 25);
     }
-    if (li < lines.length - 1) typeTarget.textContent += "\n";
+
+    if (li < lines.length - 1) {
+      typeTarget.textContent += "\n";
+      letterMessage.scrollTop = letterMessage.scrollHeight;
+    }
+
     await sleep(220);
   }
 }
+
 
 let opened = false;
 
