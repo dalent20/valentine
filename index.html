@@ -1,64 +1,67 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>💌 For You</title>
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="A little surprise 💖" />
-</head>
-<body>
-  <!-- Floating hearts background -->
-  <div class="hearts" aria-hidden="true"></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>💌 For You</title>
+    <meta name="description" content="A little surprise 💖" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-  <!-- Confetti canvas -->
-  <canvas id="confetti" aria-hidden="true"></canvas>
+  <body>
+    <!-- Floating hearts background -->
+    <div class="hearts" aria-hidden="true"></div>
 
-  <main class="wrap">
-    <section class="card" id="card">
-      <div class="badge">💘</div>
+    <!-- Confetti canvas -->
+    <canvas id="confetti" aria-hidden="true"></canvas>
 
-      <!-- Envelope -->
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
-        <div class="env-body"></div>
-        <div class="env-flap"></div>
-        <div class="env-letter">
-          <div class="letter-top">
-            <div class="to">To: <span id="toName">My Favorite Person</span></div>
-            <div class="from">From: <span id="fromName">Me</span></div>
-          </div>
+    <main class="wrap">
+      <section class="card" id="card">
+        <div class="badge">💘</div>
 
-          <div class="letter-message">
-            <div class="type" id="typeTarget"></div>
-            <div class="question" id="question" hidden>
-              <div class="big">Will you be my Valentine? 💖</div>
-              <div class="buttons">
-                <button id="yesBtn" class="btn yes">Yes 💗</button>
-                <button id="noBtn" class="btn no">No 🙈</button>
+        <!-- Envelope -->
+        <div
+          class="envelope"
+          id="envelope"
+          role="button"
+          tabindex="0"
+          aria-label="Open the letter"
+        >
+          <div class="env-body"></div>
+          <div class="env-flap"></div>
+
+          <div class="env-letter">
+            <div class="letter-top">
+              <div class="to">To: <span id="toName">My Favorite Person</span></div>
+              <div class="from">From: <span id="fromName">Me</span></div>
+            </div>
+
+            <div class="letter-message">
+              <div class="type" id="typeTarget"></div>
+
+              <div class="question" id="question" hidden>
+                <div class="big">Will you be my Valentine? 💖</div>
+                <div class="buttons">
+                  <button id="yesBtn" class="btn yes" type="button">Yes 💗</button>
+                  <button id="noBtn" class="btn no" type="button">No 🙈</button>
+                </div>
               </div>
-            <div class="footer" id="footerNote" hidden>
-  <div class="big2">YAY!!! 🥰</div>
-  <div class="small">Now click here to see your gift…</div>
-  <a class="gift-link" id="giftLink" href="gift.html">🎁 Click to open your gift</a>
-</div>
 
+              <div class="footer" id="footerNote" hidden>
+                <div class="big2">YAY!!! 🥰</div>
+                <div class="small">Now click here to see your gift…</div>
+                <a class="gift-link" id="giftLink" href="gift.html">🎁 Click to open your gift</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="hint" id="hint">Click the envelope to open 💌</div>
-    </section>
-  </main>
+        <div class="hint" id="hint">Click the envelope to open 💌</div>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
-  <img
-  src="us.jpg"
-  alt="Us ❤️"
-  id="flyPhoto"
-  aria-hidden="true"
-/>
-
-</body>
+    <img src="us.jpg" alt="Us ❤️" id="flyPhoto" aria-hidden="true" />
+  </body>
 </html>
