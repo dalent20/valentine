@@ -99,14 +99,16 @@ body{
   left: 18px;
   right: 18px;
   top: 86px;
-  height: 280px;
+
+  height: 280px;          /* was 210px */
   background: #fff;
   border-radius: 14px;
   border: 1px solid rgba(0,0,0,.06);
   box-shadow: 0 12px 30px rgba(0,0,0,.08);
   transform: translateY(70px);
   transition: transform 900ms cubic-bezier(.2,.9,.2,1);
-  overflow: auto;
+
+  overflow: hidden;       /* KEEP this */
 }
 
 
@@ -122,6 +124,10 @@ body{
 
 .letter-message{
   padding: 14px;
+
+  height: calc(100% - 52px);  /* leaves room for To/From header */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .type{
