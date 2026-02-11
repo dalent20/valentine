@@ -11,7 +11,7 @@ const GIFT_LINES = [
   "I’m officially coming to visit you:",
   "February 26 – March 3!",
   "",
-  "Get ready for hugs, dates, and me being obsessed with you in person 😌"
+  "Get ready for hugs, dates, and me being obsessed with you in person 😛"
 ];
 // ===========================
 
