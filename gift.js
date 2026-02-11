@@ -1,9 +1,9 @@
 // ===== Customize these =====
-const TO_NAME = "Babe";        // <-- match your index
-const FROM_NAME = "Your Name"; // <-- match your index
+const TO_NAME = "Grace";        // <-- match your index
+const FROM_NAME = "Dalen"; // <-- match your index
 
 const GIFT_LINES = [
-  "Hi " + TO_NAME + " 💖",
+  "Hey Babe 💖",
   "",
   "I’m so happy you said yes.",
   "I wanted to take this moment to tell you something I’ve been excited about…",
