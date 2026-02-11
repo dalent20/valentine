@@ -3,10 +3,10 @@ const TO_NAME = "Grace";        // <-- change
 const FROM_NAME = "Dalen"; // <-- change
 
 const MESSAGE_LINES = [
-  `Hey ${TO_NAME} ❤️`,
+  `Hey Babe ❤️`,
   "",
-  "I made you a tiny little page because you’re my favorite person.",
-  "You make my ordinary days feel special.",
+  "I made you a letter because you are my favorite person ever.",
+  "You make every day feel special, and I love you more and more every day.",
   "",
   "So I have one important question…"
 ];
